@@ -29,7 +29,7 @@ def scrape(r):
   return ["abc", "def", "ghi"]
 
 def writeOut(lines):
-  with open('../scrape', 'a') as result:
+  with open('../common/scrape', 'a') as result:
     for l in lines:
       result.write(l+"\n")
 
