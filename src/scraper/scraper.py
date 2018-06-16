@@ -34,10 +34,10 @@ def auth():
 def scrape(r):
 
   data = []
-  #Ideally scrape a config file for limit:subredditname
-  submissions = r.subreddit('cute').hot(limit=5)
+
+  submissions = r.subreddit('aww').hot(limit=5)
   for s in submissions:
-    data.append(DataEntry(s.url, s.title))
+      data.append(DataEntry(s.url, s.title))
   return data
 
 
@@ -45,7 +45,7 @@ def writeOut(data):
   cd = os.path.dirname(__file__)
   path = os.path.join(cd, "../common/scrape")
 
-  with open(path, 'w') as result:
+  with open(path, 'w+') as result:
     for d in data:
       result.write(d.string()+"\n")
     result.close()
