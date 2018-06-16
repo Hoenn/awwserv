@@ -11,6 +11,8 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res) {
     const blob = req.body.blob;
+    write(blob);
+
     var img = fs.readFileSync(__dirname + '/view/ok.png');
     res.writeHead(200, {'Content-Type': 'image/gif'});
     res.end(img, 'binary');
@@ -19,3 +21,11 @@ app.post('/', function(req, res) {
 app.listen(8080, function() {
 	    console.log("Listening on 8080...");
 });
+
+function write(blob) {
+    fs.writeFile("../common/queue", blob, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+    });
+}
