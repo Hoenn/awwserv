@@ -11,8 +11,33 @@ class DataEntry:
     self.link = ""
     self.desc = ""
 
+def auth():
+  #Read from bin/scraper.cred for auth paramaters
+  cred = open("../../bin/scraper.cred").read().splitlines()
+
+  #Authenticate and set readonly	
+  reddit = praw.Reddit(client_id=cred[0],
+    client_secret=cred[1],
+    password=cred[2],
+    user_agent=cred[3],
+    username=cred[4])
+  reddit.read_only = True
+
+  return reddit
+
+def scrape(r):
+  return ["abc", "def", "ghi"]
+
+def writeOut(lines):
+  with open('../scrape', 'a') as result:
+    for l in lines:
+      result.write(l+"\n")
+
+  
+
 def main():
-  #Read from bin file to know what to scrape
-  #Scrape the x top posts from y
-  # 3:aww, 5:cute
-  user_agent = ""
+  writeOut(scrape(auth()))
+  
+  
+if __name__ == "__main__":
+  main()
