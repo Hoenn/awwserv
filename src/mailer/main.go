@@ -26,5 +26,6 @@ func parseAndSend() {
 }
 
 func main() {
-	every(5*time.Second, parseAndSend)
+	parseAndSend()
+	every(24*time.Hour, parseAndSend)
 }

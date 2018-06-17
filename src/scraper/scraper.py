@@ -35,9 +35,15 @@ def scrape(r):
 
   data = []
 
-  submissions = r.subreddit('aww').hot(limit=5)
+  submissions = r.subreddit('eyebleach').top(limit=6)
   for s in submissions:
       data.append(DataEntry(s.url, s.title))
+  submissions = r.subreddit('education').top(limit=4)
+  for s in submissions:
+      data.append(DataEntry(s.shortlink, s.title))
+  submissions = r.subreddit('crafts').top(limit = 3)
+  for s in submissions:
+      data.append(DataEntry(s.shortlink, s.title))
   return data
 
 

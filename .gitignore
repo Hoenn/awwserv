@@ -1,3 +1,6 @@
 *.swp
 bin/
 src/common/
+src/mailer/pkg/
+src/mailer/src/
+mailer
